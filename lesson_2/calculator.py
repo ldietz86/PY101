@@ -1,19 +1,10 @@
-'''
-Command-line Calculator
-'''
-# Ask the user for the first number.
-# Ask the user for the second number.
-# Ask the user for an operation to perform.
-# Perform the operation on the two numbers.
-# Print the result to the terminal.
-
 def prompt(message):
     print(f"==> {message}")
 
 def invalid_number(number_str):
     try:
-        int(number_str)
-    except ValueError:
+        int(number_str) # try to convert number_str to an integer
+    except ValueError: # catch ValueError raised by int() when supplied invalid input
         return True
 
     return False
@@ -39,6 +30,11 @@ prompt(
     '1) Add 2) Subtract 3) Multiply 4) Divide')
 operation = input()
 
+'''
+Define a multi-line string using the line continuation 
+character (\) at the end of the line or with triple quotes.
+'''
+
 while operation not in ["1", "2", "3", "4"]:
     prompt('You must choose 1, 2, 3, or 4')
     operation = input()
@@ -52,4 +48,3 @@ match operation:
         prompt(f'The result is: {int(number1)* int(number2)}')
     case '4':
         prompt(f'The result is: {int(number1) / int(number2)}')
-
