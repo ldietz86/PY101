@@ -10,25 +10,23 @@ WINNING_COMBOS = {
     "spock": ["scissors", "rock"]
 }
 
-def prompt(message):
+def prompt(message): 
     print(f"==> {message}")
 
-def determine_winner(player, computer):
-    prompt(f"You chose {player}, computer chose {computer}")
+def determine_winner(player_choice, computer):
+    prompt(f"You chose {player_choice}, computer chose {computer}")
 
-    if player == computer:
-        return "tie"
-    elif computer in WINNING_COMBOS[player]:
+    if computer in WINNING_COMBOS[player_choice]:
         return "player"
-    else:
-        return "computer"
+    return "computer"
 
 def get_user_choice():
     while True:
-        prompt("Choose: rock (r), paper (p), scissors (s), lizard (l), or spock (sp): ")
-        choice = input().lower()
-    
-        match choice:
+        prompt('''Choose: rock (r), paper (p), scissors (s),
+        lizard (l), or spock (sp): ''')
+        player_choice = input().lower()
+
+        match player_choice:
             case "r":
                 return "rock"
             case "p":
@@ -64,10 +62,11 @@ while True:
         prompt("It's a tie!")
 
     prompt(f"Current score: {player_score} - {computer_score}")
-    
+
     if player_score == 3:
         prompt("Congrats, you won the game!")
         break
-    elif computer_score == 3:
+
+    if computer_score == 3:
         prompt("Computer won the game!")
         break
